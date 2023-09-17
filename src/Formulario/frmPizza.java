@@ -132,10 +132,10 @@ public class frmPizza {
     private void CargarEspecialidades() {
         comboBoxEspecialidades.addItem("Yo la armo");
         comboBoxEspecialidades.addItem("Pizza Italiana");
-        comboBoxEspecialidades.addItem("Pizza Pollo Barbacoa");
+        comboBoxEspecialidades.addItem("Pizza PolloBarbacoa");
         comboBoxEspecialidades.addItem("Pizza Loca");
-        comboBoxEspecialidades.addItem("Pizza Pizza Campestre");
-        comboBoxEspecialidades.addItem("Pizza Queso");
+        comboBoxEspecialidades.addItem("Pizza Campestre");
+        comboBoxEspecialidades.addItem("Pizza Carnibora");
 
         comboBoxEspecialidades.addActionListener(new ActionListener() {
             @Override
@@ -178,7 +178,7 @@ public class frmPizza {
                     else if (especialidadSeleccionada.equals("Pizza Campestre")) {
                     modeloIngredientes.clear();
                     ingredientesSeleccionados.clear();
-                    Topping[] ingredientesPizzaCampestre = {Topping.Frijoles, Topping.Chile, Topping.Papas, Topping.carne};
+                    Topping[] ingredientesPizzaCampestre = {Topping.Tomate, Topping.Chile, Topping.carne, Topping.Polllo,Topping.Queso};
 
                     for (Topping ingrediente : ingredientesPizzaCampestre) {
                         modeloIngredientes.addElement(ingrediente.getNombre());
@@ -187,6 +187,18 @@ public class frmPizza {
                     }
                     actualizarPrecioPizza();
                 }
+                    else if (especialidadSeleccionada.equals("Pizza Carnibora")) {
+                modeloIngredientes.clear();
+                ingredientesSeleccionados.clear();
+                Topping[] ingredientesPizzaCarnibora = {Topping.Jamon, Topping.Polllo, Topping.carne, Topping.Pepperoni,Topping.Queso};
+
+                for (Topping ingrediente : ingredientesPizzaCarnibora) {
+                    modeloIngredientes.addElement(ingrediente.getNombre());
+                    ingredientesSeleccionados.add(ingrediente);
+                    precioBase += obtenerPrecioIngrediente(ingrediente);
+                }
+                actualizarPrecioPizza();
+            }
                     else {
 
                     modeloIngredientes.clear();
@@ -217,7 +229,10 @@ public class frmPizza {
                 return precioBase;
             }
 
-            private void inicializarPreciosIngredientes() {
+
+
+
+    private void inicializarPreciosIngredientes() {
 
                 preciosIngredientes.put(Topping.Piña, 20.0);
                 preciosIngredientes.put(Topping.Mozarella, 15.0);
@@ -239,6 +254,7 @@ public class frmPizza {
 
                 // Agrega otros ingredientes y sus precios
             }
+
 
             private void CargarIngredientes() {
                 Topping[] ingredientesTopping = {Topping.Piña, Topping.Mozarella,
